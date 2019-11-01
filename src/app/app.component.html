@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="submit(model)">
+  <formly-form [form]="form" [fields]="fields | stickyFields: 'firstForm' " [model]="model"></formly-form>
+</form>
+
+
+<ng-container *ngIf="fieldList">
+<mat-selection-list #fieldSelection>
+  <mat-list-option *ngFor="let field of fieldList" [value]="field" [selected]="field.selected">
+    {{field.fieldName}}
+  </mat-list-option>
+</mat-selection-list>
+
+<button mat-raised-button (click)="saveFields(fieldSelection.selectedOptions.selected)" color="primary">Save</button>
+</ng-container>
